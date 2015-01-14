@@ -5,6 +5,9 @@ install:
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.7.tgz
 	tar -zxvf mongodb-linux-x86_64-2.6.7.tgz
 	mv mongodb-linux-x86_64-2.6.7 2.6.7
+	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.12.tgz
+	tar -zxvf mongodb-linux-x86_64-2.4.12.tgz
+	mv mongodb-linux-x86_64-2.4.12 2.4.12
 
 2.8:
 	mkdir -p /data/db
@@ -37,8 +40,4 @@ install:
 	
 2.4:
 	rm -rf /data/db/*
-	./2.4.8/bin/mongod --nojournal --noprealloc --setParameter textSearchEnabled=true
-
-2.2:
-	rm -rf /data/db/*
-	./2.2.7/bin/mongod --nojournal --noprealloc
+	./2.4.12/bin/mongod --nojournal --noprealloc --setParameter textSearchEnabled=true
