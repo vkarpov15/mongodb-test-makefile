@@ -1,10 +1,16 @@
 install:
+	rm -rf 3.0.*
+	rm -rf mongodb-linux-x86_64-3.0.*.tgz
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.0-rc8.tgz
 	tar -zxvf mongodb-linux-x86_64-3.0.0-rc8.tgz
 	mv mongodb-linux-x86_64-3.0.0-rc8 3.0.0-rc8
+	rm -rf 2.6.*
+	rm -rf mongodb-linux-x86_64-2.6.*.tgz
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.7.tgz
 	tar -zxvf mongodb-linux-x86_64-2.6.7.tgz
 	mv mongodb-linux-x86_64-2.6.7 2.6.7
+	rm -rf 2.4.*
+	rm -rf mongodb-linux-x86_64-2.4.*.tgz
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.12.tgz
 	tar -zxvf mongodb-linux-x86_64-2.4.12.tgz
 	mv mongodb-linux-x86_64-2.4.12 2.4.12
