@@ -1,14 +1,14 @@
 install:
 	rm -rf 3.0.*
 	rm -rf mongodb-linux-x86_64-3.0.*.tgz
-	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.0-rc8.tgz
-	tar -zxvf mongodb-linux-x86_64-3.0.0-rc8.tgz
-	mv mongodb-linux-x86_64-3.0.0-rc8 3.0.0-rc8
+	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.0-rc10.tgz
+	tar -zxvf mongodb-linux-x86_64-3.0.0-rc10.tgz
+	mv mongodb-linux-x86_64-3.0.0-rc10 3.0.0-rc10
 	rm -rf 2.6.*
 	rm -rf mongodb-linux-x86_64-2.6.*.tgz
-	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.7.tgz
-	tar -zxvf mongodb-linux-x86_64-2.6.7.tgz
-	mv mongodb-linux-x86_64-2.6.7 2.6.7
+	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.8.tgz
+	tar -zxvf mongodb-linux-x86_64-2.6.8.tgz
+	mv mongodb-linux-x86_64-2.6.8 2.6.8
 	rm -rf 2.4.*
 	rm -rf mongodb-linux-x86_64-2.4.*.tgz
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.12.tgz
@@ -18,17 +18,12 @@ install:
 3.0:
 	mkdir -p /data/db
 	rm -rf /data/db/*
-	./3.0.0-rc8/bin/mongod --nojournal --noprealloc
+	./3.0.0-rc10/bin/mongod --nojournal --noprealloc
 
 2.6:
 	mkdir -p /data/db
 	rm -rf /data/db/*
-	./2.6.7/bin/mongod --nojournal --noprealloc
-
-2.6-enterprise:
-	mkdir -p /data/db
-	rm -rf /data/db/*
-	./2.6.4-enterprise/bin/mongod --nojournal --noprealloc
+	./2.6.8/bin/mongod --nojournal --noprealloc
 
 2.6-repl:
 	rm -rf /data/db-*/*
@@ -36,12 +31,12 @@ install:
 	mkdir -p /data/db-27000
 	mkdir -p /data/db-27001
 	mkdir -p /data/db-27002
-	./2.6.7/bin/mongod --nojournal --noprealloc --fork --logpath ./27000.log --port 27000 --replSet "mongoose26" --dbpath /data/db-27000 
-	./2.6.7/bin/mongod --nojournal --noprealloc --fork --logpath ./27001.log --port 27001 --replSet "mongoose26" --dbpath /data/db-27001
-	./2.6.7/bin/mongod --nojournal --noprealloc --fork --logpath ./27002.log --port 27002 --replSet "mongoose26" --dbpath /data/db-27002
-	echo "rs.initiate(); " | ./2.6.7/bin/mongo --port 27000
+	./2.6.8/bin/mongod --nojournal --noprealloc --fork --logpath ./27000.log --port 27000 --replSet "mongoose26" --dbpath /data/db-27000 
+	./2.6.8/bin/mongod --nojournal --noprealloc --fork --logpath ./27001.log --port 27001 --replSet "mongoose26" --dbpath /data/db-27001
+	./2.6.8/bin/mongod --nojournal --noprealloc --fork --logpath ./27002.log --port 27002 --replSet "mongoose26" --dbpath /data/db-27002
+	echo "rs.initiate(); " | ./2.6.8/bin/mongo --port 27000
 	sleep 5
-	./2.6.7/bin/mongo --port 27000
+	./2.6.8/bin/mongo --port 27000
 	
 2.4:
 	rm -rf /data/db/*
