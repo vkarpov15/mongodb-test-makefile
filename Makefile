@@ -1,9 +1,11 @@
+THREE-O = 3.0.0-rc10
+
 install:
 	rm -rf 3.0.*
 	rm -rf mongodb-linux-x86_64-3.0.*.tgz
-	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.0-rc10.tgz
-	tar -zxvf mongodb-linux-x86_64-3.0.0-rc10.tgz
-	mv mongodb-linux-x86_64-3.0.0-rc10 3.0.0-rc10
+	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(THREE-O).tgz
+	tar -zxvf mongodb-linux-x86_64-$(THREE-O).tgz
+	mv mongodb-linux-x86_64-$(THREE-O) $(THREE-O)
 	rm -rf 2.6.*
 	rm -rf mongodb-linux-x86_64-2.6.*.tgz
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.8.tgz
@@ -18,7 +20,12 @@ install:
 3.0:
 	mkdir -p /data/db
 	rm -rf /data/db/*
-	./3.0.0-rc10/bin/mongod --nojournal --noprealloc
+	./$(THREE-O)/bin/mongod --nojournal --noprealloc
+
+3.0-wt:
+	mkdir -p /data/db
+	rm -rf /data/db/*
+	./$(THREE-O)/bin/mongod --nojournal --noprealloc --storageEngine=wiredTiger
 
 2.6:
 	mkdir -p /data/db
