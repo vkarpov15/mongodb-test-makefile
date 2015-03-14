@@ -1,4 +1,4 @@
-THREE-O = 3.0.0-rc10
+THREE-O = 3.0.0
 
 install:
 	rm -rf 3.0.*
