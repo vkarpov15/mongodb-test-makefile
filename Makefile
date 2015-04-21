@@ -23,6 +23,11 @@ install:
 	rm -rf /data/db/*
 	./$(THREE-O)/bin/mongod --nojournal --noprealloc --ipv6
 
+3.0-test:
+	mkdir -p /data/db
+	rm -rf /data/db/*
+	./$(THREE-O)/bin/mongod --nojournal --noprealloc --ipv6 --setParameter enableTestCommands=1
+
 3.0-wt:
 	mkdir -p /data/db
 	rm -rf /data/db/*
