@@ -1,4 +1,4 @@
-THREE-O = 3.0.1
+THREE-O = 3.0.2
 TWO-SIX = 2.6.8
 
 install:
