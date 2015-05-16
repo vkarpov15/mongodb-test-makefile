@@ -14,14 +14,19 @@ install:
 	mv mongodb-linux-x86_64-$(TWO-SIX) $(TWO-SIX)
 	rm -rf 2.4.*
 	rm -rf mongodb-linux-x86_64-2.4.*.tgz
-	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.12.tgz
-	tar -zxvf mongodb-linux-x86_64-2.4.12.tgz
-	mv mongodb-linux-x86_64-2.4.12 2.4.12
+	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.14.tgz
+	tar -zxvf mongodb-linux-x86_64-2.4.14.tgz
+	mv mongodb-linux-x86_64-2.4.14 2.4.14
 
 3.0:
 	mkdir -p /data/db
 	rm -rf /data/db/*
 	./$(THREE-O)/bin/mongod --nojournal --noprealloc --ipv6
+
+3.0-auth:
+	mkdir -p /data/db
+	rm -rf /data/db/*
+	./$(THREE-O)/bin/mongod --nojournal --noprealloc --ipv6 --auth
 
 3.0-test:
 	mkdir -p /data/db
@@ -53,4 +58,4 @@ install:
 	
 2.4:
 	rm -rf /data/db/*
-	./2.4.12/bin/mongod --nojournal --noprealloc --setParameter textSearchEnabled=true
+	./2.4.14/bin/mongod --nojournal --noprealloc --setParameter textSearchEnabled=true
