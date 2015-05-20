@@ -1,5 +1,5 @@
 THREE-O = 3.0.3
-TWO-SIX = 2.6.9
+TWO-SIX = 2.6.10
 
 install:
 	rm -rf 3.0.*
