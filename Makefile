@@ -1,5 +1,6 @@
 THREE-O = 3.0.5
 TWO-SIX = 2.6.10
+TWO-TWO = 2.2.7
 
 install:
 	rm -rf 3.0.*
@@ -17,6 +18,11 @@ install:
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.14.tgz
 	tar -zxvf mongodb-linux-x86_64-2.4.14.tgz
 	mv mongodb-linux-x86_64-2.4.14 2.4.14
+	rm -rf 2.2.*
+	rm -rf mongodb-linux-x86_64-2.2.*.tgz
+	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(TWO-TWO).tgz
+	tar -zxvf mongodb-linux-x86_64-$(TWO-TWO).tgz
+	mv mongodb-linux-x86_64-$(TWO-TWO) $(TWO-TWO)
 
 3.0:
 	mkdir -p /data/db
@@ -59,3 +65,8 @@ install:
 2.4:
 	rm -rf /data/db/*
 	./2.4.14/bin/mongod --nojournal --noprealloc --setParameter textSearchEnabled=true
+
+2.2:
+	mkdir -p /data/db
+	rm -rf /data/db/*
+	./$(TWO-TWO)/bin/mongod --nojournal --noprealloc --ipv6
