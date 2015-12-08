@@ -1,8 +1,14 @@
+THREE-TWO = 3.2.0
 THREE-O = 3.0.5
 TWO-SIX = 2.6.10
 TWO-TWO = 2.2.7
 
 install:
+	rm -rf 3.2.*
+	rm -rf mongodb-linux-x86_64-3.2.*.tgz
+	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(THREE-TWO).tgz
+	tar -zxvf mongodb-linux-x86_64-$(THREE-TWO).tgz
+	mv mongodb-linux-x86_64-$(THREE-TWO) $(THREE-TWO)
 	rm -rf 3.0.*
 	rm -rf mongodb-linux-x86_64-3.0.*.tgz
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(THREE-O).tgz
@@ -23,6 +29,11 @@ install:
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(TWO-TWO).tgz
 	tar -zxvf mongodb-linux-x86_64-$(TWO-TWO).tgz
 	mv mongodb-linux-x86_64-$(TWO-TWO) $(TWO-TWO)
+
+3.2:
+	mkdir -p /data/db
+	rm -rf /data/db/*
+	./$(THREE-TWO)/bin/mongod --nojournal --noprealloc --ipv6
 
 3.0:
 	mkdir -p /data/db
