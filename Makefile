@@ -1,9 +1,15 @@
+THREE-SIX = 3.6.0
 THREE-FOUR = 3.4.1
 THREE-TWO = 3.2.10
 THREE-O = 3.0.5
 TWO-SIX = 2.6.11
 
 install:
+	rm -rf 3.6.*
+	rm -rf mongodb-linux-x86_64-3.6.*.tgz
+	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(THREE-SIX).tgz
+	tar -zxvf mongodb-linux-x86_64-$(THREE-SIX).tgz
+	mv mongodb-linux-x86_64-$(THREE-SIX) $(THREE-SIX)
 	rm -rf 3.4.*
 	rm -rf mongodb-linux-x86_64-3.4.*.tgz
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(THREE-FOUR).tgz
@@ -24,11 +30,11 @@ install:
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(TWO-SIX).tgz
 	tar -zxvf mongodb-linux-x86_64-$(TWO-SIX).tgz
 	mv mongodb-linux-x86_64-$(TWO-SIX) $(TWO-SIX)
-	rm -rf 2.4.*
-	rm -rf mongodb-linux-x86_64-2.4.*.tgz
-	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.14.tgz
-	tar -zxvf mongodb-linux-x86_64-2.4.14.tgz
-	mv mongodb-linux-x86_64-2.4.14 2.4.14
+
+3.6:
+	mkdir -p /data/db
+	rm -rf /data/db/*
+	./$(THREE-SIX)/bin/mongod --nojournal --noprealloc --ipv6 --enableMajorityReadConcern --replSet rs0
 
 3.4:
 	mkdir -p /data/db
