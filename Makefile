@@ -1,4 +1,4 @@
-THREE-SIX = 3.6.0
+THREE-SIX = 3.6.2
 THREE-FOUR = 3.4.1
 THREE-TWO = 3.2.10
 THREE-O = 3.0.5
@@ -34,7 +34,7 @@ install:
 3.6:
 	mkdir -p /data/db
 	rm -rf /data/db/*
-	./$(THREE-SIX)/bin/mongod --nojournal --noprealloc --ipv6 --enableMajorityReadConcern --replSet rs0
+	./$(THREE-SIX)/bin/mongod --nojournal --noprealloc --ipv6 --bind_ip 127.0.0.1
 
 3.4:
 	mkdir -p /data/db
