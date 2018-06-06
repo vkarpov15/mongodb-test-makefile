@@ -1,3 +1,4 @@
+FOUR-O = 4.0.0-rc2
 THREE-SIX = 3.6.2
 THREE-FOUR = 3.4.1
 THREE-TWO = 3.2.10
@@ -5,31 +6,28 @@ THREE-O = 3.0.5
 TWO-SIX = 2.6.11
 
 install:
+	rm -rf mongodb-linux-*.tgz
+	rm -rf 4.0.*
+	wget https://downloads.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-$(FOUR-O).tgz
+	tar -zxvf mongodb-linux-x86_64-ubuntu1604-$(FOUR-O).tgz
+	mv mongodb-linux-x86_64-ubuntu1604-$(FOUR-O) $(FOUR-O)
 	rm -rf 3.6.*
-	rm -rf mongodb-linux-x86_64-3.6.*.tgz
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(THREE-SIX).tgz
 	tar -zxvf mongodb-linux-x86_64-$(THREE-SIX).tgz
 	mv mongodb-linux-x86_64-$(THREE-SIX) $(THREE-SIX)
 	rm -rf 3.4.*
-	rm -rf mongodb-linux-x86_64-3.4.*.tgz
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(THREE-FOUR).tgz
 	tar -zxvf mongodb-linux-x86_64-$(THREE-FOUR).tgz
 	mv mongodb-linux-x86_64-$(THREE-FOUR) $(THREE-FOUR)
 	rm -rf 3.2.*
-	rm -rf mongodb-linux-x86_64-3.2.*.tgz
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(THREE-TWO).tgz
 	tar -zxvf mongodb-linux-x86_64-$(THREE-TWO).tgz
 	mv mongodb-linux-x86_64-$(THREE-TWO) $(THREE-TWO)
-	rm -rf 3.0.*
-	rm -rf mongodb-linux-x86_64-3.0.*.tgz
-	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(THREE-O).tgz
-	tar -zxvf mongodb-linux-x86_64-$(THREE-O).tgz
-	mv mongodb-linux-x86_64-$(THREE-O) $(THREE-O)
-	rm -rf 2.6.*
-	rm -rf mongodb-linux-x86_64-2.6.*.tgz
-	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(TWO-SIX).tgz
-	tar -zxvf mongodb-linux-x86_64-$(TWO-SIX).tgz
-	mv mongodb-linux-x86_64-$(TWO-SIX) $(TWO-SIX)
+
+4.0:
+	mkdir -p /data/db
+	rm -rf /data/db/*
+	./$(FOUR-O)/bin/mongod --ipv6 --bind_ip 127.0.0.1
 
 3.6:
 	mkdir -p /data/db
