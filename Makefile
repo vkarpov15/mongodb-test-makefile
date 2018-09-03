@@ -23,6 +23,10 @@ install:
 	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(THREE-TWO).tgz
 	tar -zxvf mongodb-linux-x86_64-$(THREE-TWO).tgz
 	mv mongodb-linux-x86_64-$(THREE-TWO) $(THREE-TWO)
+	rm -rf 3.0.*
+	wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$(THREE-O).tgz
+	tar -zxvf mongodb-linux-x86_64-$(THREE-O).tgz
+	mv mongodb-linux-x86_64-$(THREE-O) $(THREE-O)
 
 4.0:
 	mkdir -p /data/db
